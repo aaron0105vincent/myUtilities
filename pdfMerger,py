@@ -1,0 +1,18 @@
+from pypdf import PdfMerger
+import os
+
+listofpdfs=[]
+# get all of the pdf filenames in the current directory
+for x in os.listdir():
+    if(".pdf" in x):
+        listofpdfs.append(x)
+# sort the list of pdfs
+listofpdfs.sort()
+print(listofpdfs)
+
+#merge the pdfs
+merger=PdfMerger()
+for x in listofpdfs:
+    merger.append(x)
+merger.write("merged.pdf")
+merger.close()
